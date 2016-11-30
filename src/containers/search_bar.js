@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchWeather } from '../actions/index';
 
-export default class SearchBar extends Component {
+class SearchBar extends Component {
   constructor(props) {
   	super(props);
 
@@ -20,6 +20,8 @@ export default class SearchBar extends Component {
 
   onFormSubmit(event) {
   	event.preventDefault();
+  	this.props.fetchWeather(this.state.term);
+  	this.setState({ term: '' });
   }
 
   render() {
@@ -39,6 +41,7 @@ export default class SearchBar extends Component {
 }
 
 // Causes fetchWeather action creator to flow through middleware and into reducers
+// By binding fetchWeather and mapping it to props below, gives access to this.props.fetchWeather above
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ fetchWeather }, dispatch);
 }
