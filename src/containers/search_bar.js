@@ -11,6 +11,7 @@ class SearchBar extends Component {
   	// If you've got a call back to this (onInputChange)
   	// you need to bind it to this
   	this.onInputChange = this.onInputChange.bind(this);
+  	this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
   onInputChange(event) {
