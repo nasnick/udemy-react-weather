@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchWeather } from '../actions/index';
 
 export default class SearchBar extends Component {
   constructor(props) {
@@ -35,4 +38,9 @@ export default class SearchBar extends Component {
     }
 }
 
-db45db0337e2fb330f52bf44be1a67da
+// Causes fetchWeather action creator to flow through middleware and into reducers
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({ fetchWeather }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);
